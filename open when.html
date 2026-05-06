@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open When...</title>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
+    background-color: #fff0f5;
+    background-image: radial-gradient(#ffd1dc 3px, transparent 3px);
+    background-size: 30px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .cute-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+    margin-top: 20px;
+  }
+
+  .nav-btn {
+    text-decoration: none;
+    padding: 12px 25px;
+    background-color: white;
+    color: #ff6f91;
+    border: 3px solid #ffe4e8;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(255, 182, 193, 0.2);
+  }
+
+  .nav-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 15px rgba(255, 182, 193, 0.4);
+    background-color: #fff0f5;
+  }
+
+  .nav-btn.active {
+    background: linear-gradient(135deg, #ffb6c1, #ff9aab);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(255, 154, 171, 0.4);
+  }
+
+  .container {
+    background: white;
+    width: 100%;
+    max-width: 700px;
+    padding: 40px;
+    border-radius: 10px;
+    border: 2px solid #ffe4e8;
+    box-shadow: 0 10px 20px rgba(255, 182, 193, 0.3);
+  }
+
+  h1 {
+    text-align: center;
+    color: #ff6f91;
+    margin-bottom: 30px;
+    font-size: 2rem;
+  }
+
+  .categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+
+  .category-btn {
+    padding: 15px;
+    background-color: #ffe4e8;
+    border: 2px solid #ffb6c1;
+    border-radius: 10px;
+    color: #ff6f91;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Comic Sans MS', cursive;
+  }
+
+  .category-btn:hover {
+    background-color: #ffb6c1;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(255, 182, 193, 0.3);
+  }
+
+  .category-btn.active {
+    background: linear-gradient(135deg, #ffb6c1, #ff9aab);
+    color: white;
+    border-color: #ff9aab;
+  }
+
+  .quote-box {
+    display: none;
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, #fff0f5, #ffe4e8);
+    border-radius: 10px;
+    border: 2px solid #ffb6c1;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .quote-box.active {
+    display: flex;
+  }
+
+  .quote-text {
+    font-size: 1.3rem;
+    color: #ff6f91;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .new-quote-btn {
+    background: linear-gradient(135deg, #ffb6c1, #ff9aab);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: center;
+    font-family: 'Comic Sans MS', cursive;
+    margin-top: 15px;
+  }
+
+  .new-quote-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 154, 171, 0.4);
+  }
+
+  .category-title {
+    text-align: center;
+    color: #ff6f91;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="cute-nav">
+  <a href="index.html" class="nav-btn">🏠 Home</a>
+  <a href="read my heart.html" class="nav-btn">💌 Read My Heart</a>
+  <a href="love letter.html" class="nav-btn">📝 Love Letter</a>
+  <a href="our memories.html" class="nav-btn">📸 Memories</a>
+  <a href="open when.html" class="nav-btn active">💝 Open When</a>
+  <a href="feedback.html" class="nav-btn">💬 Feedback</a>
+</nav>
+
+<div class="container">
+  <h1>Open When...</h1>
+  
+  <div class="categories">
+    <button class="category-btn" onclick="selectCategory(0)">❤️ Reasons I Love You</button>
+    <button class="category-btn" onclick="selectCategory(1)">😢 You're Sad</button>
+    <button class="category-btn" onclick="selectCategory(2)">💔 You Miss Me</button>
+    <button class="category-btn" onclick="selectCategory(3)">🌀 Overthinking</button>
+    <button class="category-btn" onclick="selectCategory(4)">🤍 You Need Love</button>
+    <button class="category-btn" onclick="selectCategory(5)">💪 Need Confidence</button>
+    <button class="category-btn" onclick="selectCategory(6)">☮️ You Need Peace</button>
+    <button class="category-btn" onclick="selectCategory(7)">⚡ We Fight</button>
+  </div>
+
+  <div id="quote-container">
+    <div class="quote-box active">
+      <p class="quote-text">Select how you're feeling and I'll give you a message just for you 💕</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const quotes = {
+  0: [ // Reasons I Love You
+    "I love how you overthink but still care deeply.",
+    "I love how you act strong even when you're tired.",
+    "I love the way you say my name differently when you miss me.",
+    "I love how you notice things others don't.",
+    "I love how your mood changes the whole energy of conversations.",
+    "I love how you pretend you're fine when you're clearly not.",
+    "I love how you laugh at things you try not to laugh at.",
+    "I love how you remember small details about me.",
+    "I love how you try, even when you feel like giving up.",
+    "I love how you get shy sometimes and try to hide it.",
+    "I love how you comfort others even when you need comfort.",
+    "I love how your presence feels like home.",
+    "I love how you're soft but not weak.",
+    "I love how you get excited over small things.",
+    "I love how you stay even when things feel heavy.",
+    "I love how your voice changes when you're emotional.",
+    "I love how you fight for people you care about.",
+    "I love how you exist exactly as you are."
+  ],
+  1: [ // You're Sad
+    "You don't have to fix everything today.",
+    "This feeling is real, but it's not permanent.",
+    "You are allowed to fall apart sometimes.",
+    "I'm not going anywhere.",
+    "You've survived 100% of your worst days so far.",
+    "It's okay if you're not okay right now.",
+    "You are not a burden for feeling this.",
+    "Cry if you need to. Don't hold it in.",
+    "You are still loved in this state.",
+    "This moment is not your whole life.",
+    "You don't need to be strong for me right now.",
+    "Your emotions don't make you difficult.",
+    "You are safe, even if your mind says it's not.",
+    "I wish I could sit next to you right now.",
+    "You're not alone in this feeling.",
+    "You're allowed to pause everything.",
+    "Nothing about you is broken.",
+    "You're still worthy even on your worst days.",
+    "This will pass, even if it's slow.",
+    "I care about you more than your sadness."
+  ],
+  2: [ // You Miss Me
+    "Missing me means we matter.",
+    "Distance can't reduce what's real.",
+    "I'm thinking about you too.",
+    "One day, this distance will feel small.",
+    "We're still connected, just not physically.",
+    "I wish you were here too.",
+    "Time apart is temporary. What we built isn't.",
+    "Imagine me holding your hand right now.",
+    "Every day apart is still a day we're choosing each other.",
+    "You're not missing me alone.",
+    "I miss you in ordinary moments too.",
+    "This is hard, but it's not meaningless.",
+    "We are still 'us,' even now.",
+    "I'll always come back to you."
+  ],
+  3: [ // Overthinking
+    "Not every thought is a truth.",
+    "Your mind is not always your friend.",
+    "Slow down before building stories.",
+    "You don't need to solve everything right now.",
+    "Feelings are signals, not conclusions.",
+    "Don't punish yourself for thoughts you didn't choose.",
+    "You are not seeing the full picture when you panic.",
+    "You don't need to predict everything.",
+    "Calm decisions come from calm minds.",
+    "Doubt is loud, not always correct.",
+    "Step out of your head for a moment.",
+    "Not everything is about you.",
+    "Give reality time to show itself.",
+    "Breathe before you believe the worst.",
+    "You don't need to interpret everything I do.",
+    "You are safe even without answers.",
+    "Stop turning thoughts into facts.",
+    "Let things be uncertain for now."
+  ],
+  4: [ // You Need Love
+    "You are loved without conditions.",
+    "You don't have to earn my love. You already earned it my love.",
+    "I choose you — not just your good days.",
+    "You are enough even when you feel like you're not.",
+    "You don't need to perform to be loved.",
+    "I'm still here even in silence.",
+    "You are not replaceable to me.",
+    "I care about you in ways I don't always say.",
+    "You don't need to fix yourself for me.",
+    "My love doesn't get smaller on hard days.",
+    "You are safe with me emotionally.",
+    "I'm not going anywhere.",
+    "You matter to me more than you realize."
+  ],
+  5: [ // Need Confidence
+    "You are more capable than you think.",
+    "You've handled worse before.",
+    "You don't need perfection to succeed.",
+    "Keep going even if you feel unsure.",
+    "Doubt doesn't define your ability.",
+    "You are stronger than your current mindset.",
+    "Progress matters more than perfection.",
+    "You can figure things out step by step.",
+    "You don't need approval to move forward.",
+    "You are allowed to try and fail.",
+    "Confidence is built, not found.",
+    "You are not behind in life.",
+    "Start messy, improve later.",
+    "You are capable of more than you've shown."
+  ],
+  6: [ // You Need Peace
+    "You are allowed to rest.",
+    "You don't need to be productive to be worthy.",
+    "Slow moments are not wasted time.",
+    "Your body deserves calm.",
+    "Nothing urgent needs your panic right now.",
+    "You are safe to slow down.",
+    "Peace is not something you have to earn.",
+    "Breathe without fixing anything.",
+    "The world can wait a little.",
+    "You are allowed to pause everything."
+  ],
+  7: [ // We Fight
+    "Us vs the problem, not each other.",
+    "Anger is temporary, connection is not.",
+    "We can fix things without losing each other.",
+    "This moment doesn't define us.",
+    "I still care about you, even in conflict.",
+    "Let's not say things we can't undo.",
+    "We can disagree without disconnecting."
+  ]
+};
+
+const categoryNames = [
+  "Reasons I Love You",
+  "When You're Sad",
+  "When You Miss Me",
+  "When You're Overthinking",
+  "When You Need Love",
+  "When You Need Confidence",
+  "When You Need Peace",
+  "When We Fight"
+];
+
+let currentCategory = -1;
+
+function selectCategory(index) {
+  currentCategory = index;
+  
+  // Update button styles
+  document.querySelectorAll('.category-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', i === index);
+  });
+  
+  showRandomQuote();
+}
+
+function showRandomQuote() {
+  if (currentCategory === -1) return;
+  
+  const categoryQuotes = quotes[currentCategory];
+  const randomQuote = categoryQuotes[Math.floor(Math.random() * categoryQuotes.length)];
+  
+  const quoteContainer = document.getElementById('quote-container');
+  quoteContainer.innerHTML = `
+    <div class="quote-box active">
+      <div class="category-title">${categoryNames[currentCategory]}</div>
+      <p class="quote-text">"${randomQuote}"</p>
+      <button class="new-quote-btn" onclick="showRandomQuote()">✨ Another One</button>
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>
